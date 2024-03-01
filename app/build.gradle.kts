@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.hilt)
+    id("kotlin-kapt")
 }
 
 android {
@@ -79,6 +81,17 @@ dependencies {
     //Retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofitGson)
+
+    //Hilt
+    implementation(libs.hilt)
+    kapt(libs.hiltAndroidCompilerKapt)
+
+    //Okhttp
+    implementation(libs.okhttpLoggingInterceptor)
+
+    //Chucker
+    implementation(libs.chucker)
+
 
     //Test
     testImplementation(libs.junit)
