@@ -92,6 +92,15 @@ dependencies {
     //Chucker
     implementation(libs.chucker)
 
+    //Fragment Ktx
+    implementation(libs.fragmentKtx)
+
+    //Navigation Fragment
+    implementation(libs.navigationFragment)
+
+    //Swipe Refresh Layout
+    implementation(libs.swipeRefreshLayout)
+
 
     //Test
     testImplementation(libs.junit)
