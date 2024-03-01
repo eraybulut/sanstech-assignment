@@ -9,6 +9,13 @@ appcompat = "1.6.1"
 material = "1.11.0"
 activity = "1.8.0"
 constraintlayout = "2.1.4"
+lifecycleExtensions = "2.2.0"
+lifecycleRuntimeKtx = "2.7.0"
+kotlinxCoroutinesAndroid = "1.7.3"
+lottie = "4.1.0"
+retrofit = "2.9.0"
+retrofitGson = "2.9.0"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -19,6 +26,14 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+lifecycle-extensions = { group = "androidx.lifecycle", name = "lifecycle-extensions", version.ref = "lifecycleExtensions" }
+lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
+lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie" }
+retrofit = {group = "com.squareup.retrofit2",name = "retrofit",version.ref = "retrofit"}
+retrofitGson = {group = "com.squareup.retrofit2",name = "converter-gson",version.ref = "retrofitGson"}
+
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
