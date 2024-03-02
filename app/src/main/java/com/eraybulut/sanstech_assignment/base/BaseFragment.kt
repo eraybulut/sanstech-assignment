@@ -49,6 +49,11 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel>(
         collectLast(viewModel.loading, ::handleLoadingStatus)
     }
 
+    override fun onResume() {
+        super.onResume()
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+    }
+
     private fun handleLoadingStatus(isLoading: Boolean) {
         if (isLoading) {
             loadingDialog.show()
