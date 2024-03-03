@@ -7,4 +7,11 @@
     <string name="filter">Filter</string>
     <string name="no_matches_to_show">There are currently no matches to show.</string>
     <string name="renewed">Renewed</string>
+    <string name="filter_match">Filter Matches</string>
+    <string name="match_status_all">All</string>
+    <string name="match_status_schedule">Schedule</string>
+    <string name="match_status_second_quarter">Second Quarter</string>
+    <string name="match_status_half_time">Half Time</string>
+    <string name="match_status_finished">Finished</string>
+    <string name="match_status_deferred">Deferred</string>
 </resources>

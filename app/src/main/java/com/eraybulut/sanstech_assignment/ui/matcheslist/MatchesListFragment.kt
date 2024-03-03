@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.eraybulut.sanstech_assignment.R
 import com.eraybulut.sanstech_assignment.base.BaseFragment
 import com.eraybulut.sanstech_assignment.databinding.FragmentMatchesListBinding
+import com.eraybulut.sanstech_assignment.ui.dialog.MatchesFilterBottomSheet
 import com.eraybulut.sanstech_assignment.ui.matcheslist.adapter.CompetitionHeaderAdapter
+import com.eraybulut.sanstech_assignment.utils.enums.MatchStatusTypes
 import com.eraybulut.sanstech_assignment.utils.extensions.collect
 import com.eraybulut.sanstech_assignment.utils.extensions.fadeIn
 import com.eraybulut.sanstech_assignment.utils.extensions.fadeOut
@@ -44,12 +46,12 @@ class MatchesListFragment : BaseFragment<FragmentMatchesListBinding, MatchesList
 
     override fun initializeListeners() {
         with(binding) {
-            icSort.setOnClickListener {
+            icSort.vibrateOnClick {
                 //Todo open sort dialog
             }
 
-            icFilter.setOnClickListener {
-                //Todo open filter dialog
+            icFilter.vibrateOnClick {
+                customFilterBottomSheet()
             }
 
             icRefresh.vibrateOnClick {
@@ -146,5 +148,18 @@ class MatchesListFragment : BaseFragment<FragmentMatchesListBinding, MatchesList
             rvMatches.gone()
             llNoShowingMatches.visible()
         }
+    }
+
+    private fun customFilterBottomSheet() {
+        MatchesFilterBottomSheet().apply {
+            setOnFilterClickListener { types ->
+                resetAndFilterMatches(matchStatus = types)
+            }
+        }.show(childFragmentManager, "customFilterBottomSheet")
+    }
+
+    private fun resetAndFilterMatches(matchStatus: MatchStatusTypes) {
+        viewModel.filterMatchesByStatus(status = matchStatus)
+        binding.rvMatches.goStartPosition()
     }
 }

@@ -4,6 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.eraybulut.sanstech_assignment.base.BaseViewModel
 import com.eraybulut.sanstech_assignment.data.ResultWrapper
 import com.eraybulut.sanstech_assignment.domain.usecase.GetMatchesUseCase
+import com.eraybulut.sanstech_assignment.utils.enums.MatchStatusTypes
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -81,6 +82,23 @@ class MatchesListViewModel @Inject constructor(
 
                 else -> matchesUIState
             }
+        }
+    }
+
+    fun filterMatchesByStatus(status: MatchStatusTypes) {
+        val filteredMatches = when (status) {
+            MatchStatusTypes.ALL -> matches
+            else -> matches.mapNotNull { leagueMatchesUIModel ->
+                leagueMatchesUIModel.takeIf { it.matches.any { match -> match.matchStatus == status.value } }
+                    ?.copy(matches = leagueMatchesUIModel.matches.filter { match ->
+                        match.matchStatus == status.value
+                    })
+            }
+        }
+        _matchesListUIState.value = if (filteredMatches.isEmpty()) {
+            MatchesListUIState.Empty
+        } else {
+            MatchesListUIState.Success(filteredMatches)
         }
     }
 }

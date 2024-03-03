@@ -7,4 +7,11 @@
     <string name="filter">Filtre</string>
     <string name="no_matches_to_show">Şu anda gösterilecek maç bulunmamaktadır."</string>
     <string name="renewed">Yenilendi</string>
+    <string name="filter_match">Maçları Filtrele</string>
+    <string name="match_status_all">Bütün Maçlar</string>
+    <string name="match_status_schedule">Planlanmış</string>
+    <string name="match_status_second_quarter">İkinci Çeyrek</string>
+    <string name="match_status_half_time">Devre Arası</string>
+    <string name="match_status_finished">Tamamlandı</string>
+    <string name="match_status_deferred">Ertelendi</string>
 </resources>

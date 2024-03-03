@@ -79,7 +79,6 @@
             android:orientation="vertical"
             android:overScrollMode="never"
             android:visibility="gone"
-            android:background="@color/black_pearly"
             android:paddingBottom="20dp"
             android:clipToPadding="false"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

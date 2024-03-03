@@ -45,7 +45,6 @@ class CompetitionHeaderAdapter @Inject constructor() :
 
         init {
             binding.rvMatch.apply {
-                setHasFixedSize(true)
                 itemAnimator = null
                 adapter = matchesAdapter
             }
