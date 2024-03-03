@@ -8,11 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Toast
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.eraybulut.sanstech_assignment.R
-import com.eraybulut.sanstech_assignment.utils.extensions.collectLast
+import com.eraybulut.sanstech_assignment.utils.extensions.collect
+import com.eraybulut.sanstech_assignment.utils.extensions.showToast
 
 /**
  * Created by Eray BULUT on 1.03.2024
@@ -46,7 +49,8 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel>(
         onCreateFinished()
         initializeListeners()
         observeEvents()
-        collectLast(viewModel.loading, ::handleLoadingStatus)
+        collect(viewModel.loading, ::handleLoadingStatus)
+        collect(viewModel.baseEvent, ::onViewEvent)
     }
 
     override fun onResume() {
@@ -79,6 +83,27 @@ abstract class BaseFragment<VB : ViewBinding, VM : BaseViewModel>(
                     )
                 }
             }
+    }
+
+    private fun onViewEvent(onViewEvent: BaseViewEvent) {
+        when (onViewEvent) {
+            is BaseViewEvent.ShowToast<*> -> {
+                when (val message = onViewEvent.message) {
+                    is String -> requireContext().showToast(message)
+                    is Int -> requireContext().showToast(getString(message))
+                    else -> throw IllegalArgumentException("Unsupported message type")
+                }
+            }
+
+        }
+    }
+
+    private fun showMessage(message: String, duration: Int = Toast.LENGTH_SHORT) {
+        requireContext().showToast(message, duration)
+    }
+
+    private fun showMessage(@StringRes message: Int, duration: Int = Toast.LENGTH_SHORT) {
+        showMessage(message = getString(message), duration = duration)
     }
 
     override fun onDestroyView() {

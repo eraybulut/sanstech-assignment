@@ -1,4 +1,4 @@
-package com.eraybulut.sanstech_assignment.domain.service
+package com.eraybulut.sanstech_assignment.data.service
 
 import com.eraybulut.sanstech_assignment.data.model.request.BaseResponse
 import com.eraybulut.sanstech_assignment.data.model.response.MatchesResponseModel
@@ -9,8 +9,7 @@ import retrofit2.http.GET
  * eraybulutlar@gmail.com
  */
 
-interface ApiService {
-
+interface MatchService {
     @GET("statistics/sport/SOCCER/matches")
     suspend fun getMatches(): BaseResponse<List<MatchesResponseModel>>
 }

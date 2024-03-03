@@ -1,4 +1,4 @@
-package com.eraybulut.sanstech_assignment.domain
+package com.eraybulut.sanstech_assignment.data
 
 /**
  * Created by Eray BULUT on 1.03.2024

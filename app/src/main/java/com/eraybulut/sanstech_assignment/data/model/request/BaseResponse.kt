@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName
 
 data class BaseResponse<T>(
     @SerializedName("success")
-    val success: Boolean,
+    val success: Boolean?,
     @SerializedName("data")
     val data: T? = null,
     @SerializedName("error")

@@ -4,7 +4,7 @@ import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.eraybulut.sanstech_assignment.BuildConfig
 import com.eraybulut.sanstech_assignment.data.NetworkConnectionInterceptor
-import com.eraybulut.sanstech_assignment.domain.service.ApiService
+import com.eraybulut.sanstech_assignment.data.service.MatchService
 import com.eraybulut.sanstech_assignment.utils.Constants
 import dagger.Module
 import dagger.Provides
@@ -83,7 +83,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideApiService(retrofit: Retrofit): ApiService {
-        return retrofit.create(ApiService::class.java)
+    fun provideApiService(retrofit: Retrofit): MatchService {
+        return retrofit.create(MatchService::class.java)
     }
 }

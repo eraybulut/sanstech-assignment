@@ -5,4 +5,6 @@
     <string name="matches">Maçlar</string>
     <string name="sort">Sırala</string>
     <string name="filter">Filtre</string>
+    <string name="no_matches_to_show">Şu anda gösterilecek maç bulunmamaktadır."</string>
+    <string name="renewed">Yenilendi</string>
 </resources>

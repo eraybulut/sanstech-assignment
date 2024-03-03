@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".ui.matcheslist.MatchesListFragment">
 
 
@@ -27,12 +27,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
-        android:foreground="@drawable/ripple_10"
-        android:focusable="true"
         android:clickable="true"
+        android:contentDescription="@string/filter"
+        android:focusable="true"
+        android:foreground="@drawable/ripple_10"
         android:padding="10dp"
         android:src="@drawable/ic_filter"
-        android:contentDescription="@string/filter"
         app:layout_constraintBottom_toBottomOf="@+id/icSort"
         app:layout_constraintEnd_toStartOf="@+id/icSort"
         app:layout_constraintTop_toTopOf="@+id/icSort" />
@@ -43,26 +43,104 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:focusable="true"
         android:clickable="true"
+        android:contentDescription="@string/sort"
+        android:focusable="true"
         android:foreground="@drawable/ripple_10"
         android:padding="10dp"
         android:src="@drawable/ic_sort"
-        android:contentDescription="@string/sort"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvMatches"
+    <ImageView
+        android:id="@+id/ic_refresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:padding="10dp"
+        android:src="@drawable/ic_refresh"
+        app:layout_constraintBottom_toBottomOf="@+id/icFilter"
+        app:layout_constraintEnd_toStartOf="@+id/icFilter"
+        app:layout_constraintTop_toTopOf="@+id/icFilter" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/icFilter">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvMatches"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:overScrollMode="never"
+            android:visibility="gone"
+            android:background="@color/black_pearly"
+            android:paddingBottom="20dp"
+            android:clipToPadding="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_competition_header"
+            tools:visibility="visible" />
+
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+    <LinearLayout
+        android:id="@+id/llNoShowingMatches"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="vertical"
-        android:overScrollMode="never"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/icFilter"
-        tools:listitem="@layout/item_competition_header" />
+        tools:visibility="visible">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_circular"
+            android:backgroundTint="@color/black_pearly"
+            android:padding="10dp"
+            android:src="@drawable/ic_sports_and_outdoors"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/font_poppins_medium"
+            android:text="@string/no_matches_to_show"
+            android:textAlignment="center"
+            android:textColor="@color/black_pearly"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/icScrollToTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_circular"
+        android:backgroundTint="@color/ultimate_orange"
+        android:padding="10dp"
+        android:src="@drawable/ic_expand_less"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/swipeRefreshLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

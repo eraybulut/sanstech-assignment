@@ -101,6 +101,9 @@ dependencies {
     //Swipe Refresh Layout
     implementation(libs.swipeRefreshLayout)
 
+    //Coil
+    implementation(libs.coil)
+
 
     //Test
     testImplementation(libs.junit)

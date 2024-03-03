@@ -22,6 +22,7 @@ chucker = "4.0.0"
 fragmentKtx = "1.2.0-alpha01"
 swipeRefreshLayout = "1.1.0"
 navigationFragment = "2.7.6"
+coil = "2.4.0"
 
 
 [libraries]
@@ -46,7 +47,7 @@ chucker = { group = "com.github.chuckerteam.chucker", name = "library", version.
 fragmentKtx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragmentKtx"}
 swipeRefreshLayout = { group = "androidx.swiperefreshlayout",name = "swiperefreshlayout",version.ref = "swipeRefreshLayout"}
 navigationFragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragment"}
-
+coil = { group = "io.coil-kt",name = "coil",version.ref = "coil"}
 
 
 [plugins]

@@ -5,4 +5,6 @@
     <string name="matches">Matches</string>
     <string name="sort">Sort</string>
     <string name="filter">Filter</string>
+    <string name="no_matches_to_show">There are currently no matches to show.</string>
+    <string name="renewed">Renewed</string>
 </resources>
