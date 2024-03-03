@@ -12,6 +12,12 @@ This repository contains the Android application for Sanstech, designed to inter
 | ----- | ----- | ----- |
 |<img src="media/stared_match.png" width="270"/>|<img src="media/empty_match.png" width="270"/>|<img src="media/match_detail.png" width="270"/>|
 
+## Video
+
+https://github.com/eraybulut/sanstech-assignment/assets/84306596/f2378253-6b54-4dc6-95d2-7f5b077af805
+
+
+
 ## Project Structure
 
 The project follows a clean architecture approach, organized into several packages:
