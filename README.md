@@ -2,6 +2,16 @@
 
 This repository contains the Android application for Sanstech, designed to interact with a sports match API and display match details using a RecyclerView. It offers filtering capabilities based on match status and time.
 
+## Screenshot
+
+| Matches | Filter Match| Sort Match
+| ----- | ----- | ----- |
+|<img src="media/matchs.png" width="270"/>|<img src="media/filter_scrren.png" width="270"/>|<img src="media/sort_match.png" width="270"/>|
+
+| Star Match | Empty Match| Match Detail
+| ----- | ----- | ----- |
+|<img src="media/stared_match.png" width="270"/>|<img src="media/empty_match.png" width="270"/>|<img src="media/match_detail.png" width="270"/>|
+
 ## Project Structure
 
 The project follows a clean architecture approach, organized into several packages:
