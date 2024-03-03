@@ -16,4 +16,10 @@
     <string name="match_status_deferred">Deferred</string>
     <string name="first_the_newest">First the newest</string>
     <string name="first_the_oldest">First the oldest</string>
+    <string name="match_detail">Match Detail</string>
+    <string name="home_team">Home Team</string>
+    <string name="away_team">Away Team</string>
+    <string name="score">Score</string>
+    <string name="red_card_count">Red Card Count</string>
+    <string name="match_status">Match Status</string>
 </resources>

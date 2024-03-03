@@ -1,7 +1,9 @@
 package com.eraybulut.sanstech_assignment.ui.matcheslist
 
+import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.eraybulut.sanstech_assignment.R
 import com.eraybulut.sanstech_assignment.base.BaseFragment
@@ -9,6 +11,7 @@ import com.eraybulut.sanstech_assignment.databinding.FragmentMatchesListBinding
 import com.eraybulut.sanstech_assignment.ui.dialog.matchfilter.MatchesFilterBottomSheet
 import com.eraybulut.sanstech_assignment.ui.dialog.matchsort.MatchesSortBottomSheet
 import com.eraybulut.sanstech_assignment.ui.matcheslist.adapter.CompetitionHeaderAdapter
+import com.eraybulut.sanstech_assignment.utils.Constants
 import com.eraybulut.sanstech_assignment.utils.enums.MatchStatusTypes
 import com.eraybulut.sanstech_assignment.utils.enums.SortOrderTypes
 import com.eraybulut.sanstech_assignment.utils.extensions.collect
@@ -86,8 +89,19 @@ class MatchesListFragment : BaseFragment<FragmentMatchesListBinding, MatchesList
     private fun handleMatchClickEvent(matchEventListener: MatchEventListener) {
         when (matchEventListener) {
             is MatchEventListener.OnFavoritesClicked -> changeFavoriteStatus(matchId = matchEventListener.matchId)
-            is MatchEventListener.OnMatchClicked -> Unit //Todo GoTo Detail page
+            is MatchEventListener.OnMatchClicked -> navigateToMatchDetail(match = matchEventListener.match)
         }
+    }
+
+    private fun navigateToMatchDetail(match: MatchesItemUIModel) {
+        val bundle = Bundle().apply {
+            putParcelable(Constants.MATCH_KEY, match)
+        }
+        findNavController().navigate(
+            R.id.action_matchesListFragment_to_matchDetailsFragment,
+            bundle
+        )
+
     }
 
     private fun changeFavoriteStatus(matchId: Int) {

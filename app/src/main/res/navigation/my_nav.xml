@@ -9,10 +9,18 @@
         android:id="@+id/matchesListFragment"
         android:name="com.eraybulut.sanstech_assignment.ui.matcheslist.MatchesListFragment"
         android:label="fragment_matches_list"
-        tools:layout="@layout/fragment_matches_list" />
+        tools:layout="@layout/fragment_matches_list" >
+        <action
+            android:id="@+id/action_matchesListFragment_to_matchDetailsFragment"
+            app:destination="@id/matchDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/matchDetailsFragment"
         android:name="com.eraybulut.sanstech_assignment.ui.matchdetails.MatchDetailsFragment"
         android:label="fragment_match_details"
-        tools:layout="@layout/fragment_match_details" />
+        tools:layout="@layout/fragment_match_details" >
+        <argument
+            android:name="match"
+            app:argType="com.eraybulut.sanstech_assignment.ui.matcheslist.MatchesItemUIModel" />
+    </fragment>
 </navigation>

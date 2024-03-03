@@ -12,4 +12,5 @@ object Constants {
     const val EMPTY_STRING = ""
     const val ZERO = 0
     const val DATE_FORMAT= "dd/MM/yyyy"
+    const val MATCH_KEY = "matchDetail"
 }

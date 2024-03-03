@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.hilt)
     id("kotlin-kapt")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -103,7 +104,6 @@ dependencies {
 
     //Coil
     implementation(libs.coil)
-
 
     //Test
     testImplementation(libs.junit)

@@ -2,6 +2,8 @@ package com.eraybulut.sanstech_assignment.utils.extensions
 
 import android.content.Context
 import android.os.Build
+import android.os.Bundle
+import android.os.Parcelable
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.view.LayoutInflater
@@ -28,20 +30,9 @@ import java.util.Locale
  * eraybulutlar@gmail.com
  */
 
-fun Context.vibrate(duration: Long = 50) {
-    val vibrator = getSystemService(Vibrator::class.java)
-    if (vibrator != null) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            vibrator.vibrate(
-                VibrationEffect.createOneShot(
-                    duration, VibrationEffect.DEFAULT_AMPLITUDE
-                )
-            )
-        } else {
-            @Suppress("DEPRECATION")
-            vibrator.vibrate(duration)
-        }
-    }
+inline fun <reified T : Parcelable> Bundle.parcelable(key: String): T? = when {
+    Build.VERSION.SDK_INT >= 33 -> getParcelable(key, T::class.java)
+    else -> @Suppress("DEPRECATION") getParcelable(key) as? T
 }
 
 fun View.applyWindowInsets() {
@@ -68,9 +59,4 @@ fun RecyclerView.goStartPosition() {
 
 fun RecyclerView.goStartPositionSmooth() {
     smoothScrollToPosition(ZERO)
-}
-
-
-fun Context.showToast(message: String, duration: Int = Toast.LENGTH_SHORT) {
-    Toast.makeText(this, message, duration).show()
 }

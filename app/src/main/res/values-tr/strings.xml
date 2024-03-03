@@ -16,4 +16,10 @@
     <string name="match_status_deferred">Ertelendi</string>
     <string name="first_the_newest">Önce en yeni</string>
     <string name="first_the_oldest">Önce en eski</string>
+    <string name="match_detail">Maç Detay</string>
+    <string name="home_team">Ev Sahibi Takım</string>
+    <string name="away_team">Deplasman Takımı</string>
+    <string name="score">Score</string>
+    <string name="red_card_count">Kırmızı Kart Sayısı</string>
+    <string name="match_status">Eşleşme Durumu</string>
 </resources>
