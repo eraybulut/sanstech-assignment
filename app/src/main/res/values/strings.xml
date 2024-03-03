@@ -14,4 +14,6 @@
     <string name="match_status_half_time">Half Time</string>
     <string name="match_status_finished">Finished</string>
     <string name="match_status_deferred">Deferred</string>
+    <string name="first_the_newest">First the newest</string>
+    <string name="first_the_oldest">First the oldest</string>
 </resources>

@@ -14,4 +14,6 @@
     <string name="match_status_half_time">Devre Arası</string>
     <string name="match_status_finished">Tamamlandı</string>
     <string name="match_status_deferred">Ertelendi</string>
+    <string name="first_the_newest">Önce en yeni</string>
+    <string name="first_the_oldest">Önce en eski</string>
 </resources>

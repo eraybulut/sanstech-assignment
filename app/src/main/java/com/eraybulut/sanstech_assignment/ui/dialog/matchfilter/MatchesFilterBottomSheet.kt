@@ -1,4 +1,4 @@
-package com.eraybulut.sanstech_assignment.ui.dialog
+package com.eraybulut.sanstech_assignment.ui.dialog.matchfilter
 
 import com.eraybulut.sanstech_assignment.R
 import com.eraybulut.sanstech_assignment.base.BaseBottomSheet

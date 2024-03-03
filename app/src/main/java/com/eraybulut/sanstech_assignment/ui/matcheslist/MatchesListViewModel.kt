@@ -5,6 +5,8 @@ import com.eraybulut.sanstech_assignment.base.BaseViewModel
 import com.eraybulut.sanstech_assignment.data.ResultWrapper
 import com.eraybulut.sanstech_assignment.domain.usecase.GetMatchesUseCase
 import com.eraybulut.sanstech_assignment.utils.enums.MatchStatusTypes
+import com.eraybulut.sanstech_assignment.utils.enums.SortOrderTypes
+import com.eraybulut.sanstech_assignment.utils.extensions.orZero
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -100,5 +102,19 @@ class MatchesListViewModel @Inject constructor(
         } else {
             MatchesListUIState.Success(filteredMatches)
         }
+    }
+
+    fun sortMatches(sortOrder: SortOrderTypes) {
+        val sortedMatches = when (sortOrder) {
+            SortOrderTypes.NEWEST_FIRST -> matches.map { leagueMatchesUIModel ->
+                leagueMatchesUIModel.copy(matches = leagueMatchesUIModel.matches.sortedByDescending { it.matchTime })
+            }.sortedByDescending { it.matches.firstOrNull()?.matchTime.orZero() }
+
+
+            SortOrderTypes.OLDEST_FIRST -> matches.map { leagueMatchesUIModel ->
+                leagueMatchesUIModel.copy(matches = leagueMatchesUIModel.matches.sortedBy { it.matchTime })
+            }.sortedBy { it.matches.firstOrNull()?.matchTime.orZero() }
+        }
+        _matchesListUIState.value = MatchesListUIState.Success(sortedMatches)
     }
 }

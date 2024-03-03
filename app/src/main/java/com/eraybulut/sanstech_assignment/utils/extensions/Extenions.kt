@@ -63,8 +63,13 @@ fun ViewGroup.inflateBinding(inflateMethod: (LayoutInflater, ViewGroup, Boolean)
 }
 
 fun RecyclerView.goStartPosition() {
+    scrollToPosition(ZERO)
+}
+
+fun RecyclerView.goStartPositionSmooth() {
     smoothScrollToPosition(ZERO)
 }
+
 
 fun Context.showToast(message: String, duration: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(this, message, duration).show()

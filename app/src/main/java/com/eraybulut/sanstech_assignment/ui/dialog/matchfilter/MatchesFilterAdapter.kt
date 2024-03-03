@@ -1,4 +1,4 @@
-package com.eraybulut.sanstech_assignment.ui.dialog
+package com.eraybulut.sanstech_assignment.ui.dialog.matchfilter
 
 /**
  * Created by Eray BULUT on 3.03.2024

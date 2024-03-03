@@ -6,13 +6,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.eraybulut.sanstech_assignment.R
 import com.eraybulut.sanstech_assignment.base.BaseFragment
 import com.eraybulut.sanstech_assignment.databinding.FragmentMatchesListBinding
-import com.eraybulut.sanstech_assignment.ui.dialog.MatchesFilterBottomSheet
+import com.eraybulut.sanstech_assignment.ui.dialog.matchfilter.MatchesFilterBottomSheet
+import com.eraybulut.sanstech_assignment.ui.dialog.matchsort.MatchesSortBottomSheet
 import com.eraybulut.sanstech_assignment.ui.matcheslist.adapter.CompetitionHeaderAdapter
 import com.eraybulut.sanstech_assignment.utils.enums.MatchStatusTypes
+import com.eraybulut.sanstech_assignment.utils.enums.SortOrderTypes
 import com.eraybulut.sanstech_assignment.utils.extensions.collect
 import com.eraybulut.sanstech_assignment.utils.extensions.fadeIn
 import com.eraybulut.sanstech_assignment.utils.extensions.fadeOut
 import com.eraybulut.sanstech_assignment.utils.extensions.goStartPosition
+import com.eraybulut.sanstech_assignment.utils.extensions.goStartPositionSmooth
 import com.eraybulut.sanstech_assignment.utils.extensions.gone
 import com.eraybulut.sanstech_assignment.utils.extensions.showToast
 import com.eraybulut.sanstech_assignment.utils.extensions.vibrateOnClick
@@ -47,11 +50,11 @@ class MatchesListFragment : BaseFragment<FragmentMatchesListBinding, MatchesList
     override fun initializeListeners() {
         with(binding) {
             icSort.vibrateOnClick {
-                //Todo open sort dialog
+                showMatchesSortDialog()
             }
 
             icFilter.vibrateOnClick {
-                customFilterBottomSheet()
+                showMatchesFilterDialog()
             }
 
             icRefresh.vibrateOnClick {
@@ -60,7 +63,7 @@ class MatchesListFragment : BaseFragment<FragmentMatchesListBinding, MatchesList
             }
 
             icScrollToTop.vibrateOnClick {
-                binding.rvMatches.goStartPosition()
+                rvMatches.goStartPositionSmooth()
             }
         }
     }
@@ -117,6 +120,7 @@ class MatchesListFragment : BaseFragment<FragmentMatchesListBinding, MatchesList
     private fun setMatchesList(matches: List<LeagueMatchesUIModel>) {
         showSuccessUI()
         competitionHeaderAdapter.submitList(matches)
+        binding.rvMatches.goStartPosition()
     }
 
     private fun setSwipeToRefreshLayout() {
@@ -150,7 +154,7 @@ class MatchesListFragment : BaseFragment<FragmentMatchesListBinding, MatchesList
         }
     }
 
-    private fun customFilterBottomSheet() {
+    private fun showMatchesFilterDialog() {
         MatchesFilterBottomSheet().apply {
             setOnFilterClickListener { types ->
                 resetAndFilterMatches(matchStatus = types)
@@ -160,6 +164,17 @@ class MatchesListFragment : BaseFragment<FragmentMatchesListBinding, MatchesList
 
     private fun resetAndFilterMatches(matchStatus: MatchStatusTypes) {
         viewModel.filterMatchesByStatus(status = matchStatus)
-        binding.rvMatches.goStartPosition()
+    }
+
+    private fun showMatchesSortDialog() {
+        MatchesSortBottomSheet().apply {
+            setOnSortClickListener {
+                sortMatches(sortTypes = it)
+            }
+        }.show(childFragmentManager, "sortMatchDialog")
+    }
+
+    private fun sortMatches(sortTypes: SortOrderTypes) {
+        viewModel.sortMatches(sortOrder = sortTypes)
     }
 }

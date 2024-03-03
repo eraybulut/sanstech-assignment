@@ -19,7 +19,9 @@ abstract class BaseBottomSheet<VB : ViewBinding>(
     private var _binding: VB? = null
     protected val binding: VB get() = _binding as VB
 
-    protected abstract fun onCreateFinished()
+    protected open fun onCreateFinished (){}
+
+    protected open fun initializeListeners() {}
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -31,6 +33,7 @@ abstract class BaseBottomSheet<VB : ViewBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         onCreateFinished()
+        initializeListeners()
     }
 
     override fun onDestroyView() {
