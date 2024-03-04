@@ -40,6 +40,7 @@ Development has been carried out using feature branches merged into the `develop
 - `features/base-classes`
 - `features/navigation-and-fragments`
 - `features/hilt-dependency-injection`
+- 'bugfix/network-and-error-handling'
 
 Each feature branch is dedicated to a specific component or enhancement of the application.
 
