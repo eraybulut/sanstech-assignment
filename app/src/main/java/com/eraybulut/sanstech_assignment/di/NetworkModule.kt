@@ -29,6 +29,18 @@ object NetworkModule {
 
     @Singleton
     @Provides
+    fun provideChuckerInterceptor(@ApplicationContext context: Context): ChuckerInterceptor {
+        return ChuckerInterceptor.Builder(context).build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideNetworkConnectionInterceptor(@ApplicationContext context: Context): NetworkConnectionInterceptor {
+        return NetworkConnectionInterceptor(context)
+    }
+
+    @Singleton
+    @Provides
     fun provideHttpLoggerInterceptor(): HttpLoggingInterceptor {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
         if (BuildConfig.DEBUG) {
@@ -40,24 +52,19 @@ object NetworkModule {
 
     @Provides
     fun provideOkHttpClient(
-        @ApplicationContext context: Context,
+        httpLoggingInterceptor: HttpLoggingInterceptor,
+        chuckerInterceptor: ChuckerInterceptor,
+        networkConnectionInterceptor: NetworkConnectionInterceptor
     ): OkHttpClient {
-        val httpLoggingInterceptor = HttpLoggingInterceptor().apply {
-            level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY
-            else HttpLoggingInterceptor.Level.NONE
-        }
-
-        val builder = OkHttpClient.Builder()
-            .addInterceptor(httpLoggingInterceptor)
+        val builder = OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor)
+            .addInterceptor(networkConnectionInterceptor)
             .connectTimeout(Constants.CONNECT_TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(Constants.READ_TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(Constants.WRITE_TIMEOUT, TimeUnit.SECONDS)
 
         if (BuildConfig.DEBUG) {
-            builder.addInterceptor(ChuckerInterceptor(context))
+            builder.addInterceptor(chuckerInterceptor)
         }
-
-        builder.addInterceptor(NetworkConnectionInterceptor(context))
 
         return builder.build()
     }

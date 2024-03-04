@@ -4,8 +4,8 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.eraybulut.sanstech_assignment.data.model.request.BaseResponse
 import com.eraybulut.sanstech_assignment.data.ResultWrapper
+import com.eraybulut.sanstech_assignment.data.model.request.BaseResponse
 import com.eraybulut.sanstech_assignment.utils.extensions.orFalse
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -54,7 +54,8 @@ abstract class BaseViewModel : ViewModel() {
             if (response.success.orFalse()) {
                 ResultWrapper.Success(response.data)
             } else {
-                ResultWrapper.Error(response.error.orEmpty())
+                val errorMessage = response.error?.flatten()?.joinToString(", ").orEmpty()
+                ResultWrapper.Error(errorMessage)
             }
         } catch (throwable: Throwable) {
             handleApiError(throwable)

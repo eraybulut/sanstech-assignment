@@ -10,9 +10,8 @@ import com.eraybulut.sanstech_assignment.utils.Constants.ZERO
 
 data class LeagueMatchesUIModel(
     val leagueName: String = EMPTY_STRING,
-    var leagueId: Int = ZERO,
-    var flag: String = EMPTY_STRING,
+    val leagueId: Int = ZERO,
+    val flag: String = EMPTY_STRING,
     val matches: List<MatchesItemUIModel> = emptyList(),
 )
 
-//Todo val

@@ -11,13 +11,13 @@ import kotlinx.parcelize.Parcelize
  */
 @Parcelize
 data class MatchesItemUIModel(
-    var matchId: Int = ZERO,
-    var matchTime: Long = 0L,
-    var matchAbbr: String = EMPTY_STRING,
-    var matchRedCount: String = EMPTY_STRING,
-    var matchScore: String = EMPTY_STRING,
-    var homeTeamName: String = EMPTY_STRING,
-    var awayTeamName: String = EMPTY_STRING,
-    var matchStatus: Int = ZERO,
-    var isFavorite: Boolean = false
+    val matchId: Int = ZERO,
+    val matchTime: Long = 0L,
+    val matchAbbr: String = EMPTY_STRING,
+    val matchRedCount: String = EMPTY_STRING,
+    val matchScore: String = EMPTY_STRING,
+    val homeTeamName: String = EMPTY_STRING,
+    val awayTeamName: String = EMPTY_STRING,
+    val matchStatus: Int = ZERO,
+    val isFavorite: Boolean = false
 ): Parcelable

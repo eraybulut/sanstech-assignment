@@ -13,5 +13,5 @@ data class BaseResponse<T>(
     @SerializedName("data")
     val data: T? = null,
     @SerializedName("error")
-    val error: String? = null,
+    val error: List<List<String>>? = null
 )
