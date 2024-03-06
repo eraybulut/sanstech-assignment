@@ -23,7 +23,8 @@ class GetMatchesUseCase @Inject constructor(
         if (response.success == true) {
             emit(ResultWrapper.Success(response.data?.toLeagueMatchesUIModel().orEmpty()))
         } else {
-            emit(ResultWrapper.Error(response.error.orEmpty()))
+            val errorMessage = response.error?.flatten()?.joinToString(", ").orEmpty()
+            emit(ResultWrapper.Error(errorMessage))
         }
     }.catch { e ->
         emit(ResultWrapper.Error(e.message.orEmpty()))
